@@ -50,4 +50,19 @@ public class GroupsTests extends BaseTests{
         baseSteps.waitTime(5);
     }
 
+    @Test
+    public void deleteRule(){
+        loginSteps.doLogin(Constants.TESTING_EMAIL,Constants.TESTING_PASSWORD);
+        baseSteps.openMastermind();
+        groupsSteps.clickOnGroups();
+        groupsSteps.paidGroupCreate("PAIDGRUPTEST");
+        groupsSteps.clickOnRulesColumn();
+        groupsSteps.clickOnAddNewRuleButton();
+        groupsSteps.clickOnAddNewRuleButton();
+        groupsSteps.clickOnAddNewRuleButton();
+        groupsSteps.completeTheLastRuleField("TESTESTESTESTESTESTESt");
+        groupsSteps.deleteLastRule();
+
+    }
+
 }

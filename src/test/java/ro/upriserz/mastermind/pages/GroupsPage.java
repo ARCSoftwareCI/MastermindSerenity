@@ -1,14 +1,17 @@
 package ro.upriserz.mastermind.pages;
 
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.checkerframework.checker.units.qual.C;
-import org.yecht.Data;
-//import org.openqa.selenium.WebElement;
+
+//
 
 import java.util.List;
 
+
 public class GroupsPage extends BasePage{
+
+
 
     @FindBy (css = ".hidden.sticky a:nth-child(2)")
     private WebElementFacade groupsButton;
@@ -29,13 +32,13 @@ public class GroupsPage extends BasePage{
     private WebElementFacade createGroupButton;
 
     @FindBy (id = "description")
-    private WebElementFacade groupDescription;
-
-    @FindBy (id = "goals")
-    private WebElementFacade groupGoals;
+    private WebElementFacade descriptionTextField;
 
     @FindBy (id = "max-members")
-    private WebElementFacade groupNumberOfMembers;
+    private WebElementFacade maxAttendeeField;
+
+    @FindBy (id = "goals")
+    private WebElementFacade goalsTextField;
 
     @FindBy (css = ".col-span-2 .w-full .relative .bg-white")
     private WebElementFacade groupFrequency;
@@ -112,7 +115,89 @@ public class GroupsPage extends BasePage{
     @FindBy (css = ".text-yellow-700 p")
     private WebElementFacade priceGroupVerificationText;
 
+    @FindBy (css = "div:nth-child(3) > div> button.bg-ms-orange-500")
+    private WebElementFacade saveChangeButtonFromGroupDetails;
 
+    @FindBy (css = "div:nth-child(3) > div > .p-2")
+    private WebElementFacade cancelButtonFromGroupDetails;
+
+    @FindBy (css = "div:nth-child(4) > div> button.bg-ms-orange-500")
+    private WebElementFacade saveChangeButtonFromGroupRules;
+
+    @FindBy (css = "div:nth-child(4) > div > .p-2")
+    private WebElementFacade cancelButtonFromGroupRules;
+
+    @FindBy (css = "li:nth-child(1) > .px-5")
+    private WebElementFacade groupDetailsColumn;
+
+    @FindBy (css = "li:nth-child(2) > .px-5")
+    private WebElementFacade groupRulesColumn;
+
+    @FindBy (css = "li:nth-child(3) > .px-5")
+    private WebElementFacade groupJoinRequestColumn;
+
+    @FindBy (css = "li:nth-child(4) > .px-5")
+    private WebElementFacade groupPriceColumn;
+
+    @FindBy (css = "li:nth-child(5) > .px-5")
+    private WebElementFacade groupLegalColumn;
+
+    @FindBy (css = "li:nth-child(6) > .px-5")
+    private WebElementFacade groupAdministratorsColumn;
+
+    @FindBy (css = "li:nth-child(7) > .px-5")
+    private WebElementFacade groupGamificationColumn;
+
+    @FindBy (css = "div > div> div > div > div > div:nth-child(4) > .text-lg")
+    private WebElementFacade groupRulesColumnVerificationText;
+
+    @FindBy (css = "div > div> div > div > div > div:nth-child(5) > .text-lg")
+    private WebElementFacade groupJoinRequestFieldColumnVerificationText;
+
+    @FindBy (css = "div > div> div > div > div > div:nth-child(7) > .text-lg")
+    private WebElementFacade groupLegalColumnVerificationText;
+
+    @FindBy (css = "div > div> div > div > div > div:nth-child(8) > .text-lg")
+    private WebElementFacade getGroupAdministratorsColumnVerificationText;
+
+    @FindBy (css = "#app > div > div > div > div > div > div:nth-child(4) > button" )
+    private WebElementFacade addNewRuleButton;
+
+    @FindBy (css = ".mb-8.lg\\:mb-5 textarea")
+    private WebElementFacade newLastRuleFieldText;
+
+    @FindBy (css = ".mb-8.lg\\:mb-5 .lg\\:mx-3")
+    private WebElementFacade deleteLastRuleButton;
+
+    @FindBy (css = ".mb-8.lg\\:mb-5 .sorting-handle svg")
+    private WebElementFacade sortingLastRulesButton;
+
+    @FindBy (css =  "ul > li:nth-child(2) > div > .sorting-handle svg")
+    private WebElementFacade secondRule;
+//    private int n;
+//    @FindBy (css = GroupsPage.getSelector(this.n))
+//    private WebElementFacade deleteButtonFromWhichRuleNumberYouSay;
+//
+//    public GroupsPage(int n) {
+//        this.n = n;
+//    }
+//    public static String getSelector(int n) {
+//        return "ul > li:nth-child(" + n + ") > div > .lg\\:mx-3";
+//    }
+//    public void moveToDelete(int n){
+//        String selector = "ul > li:nth-child(" + n + ") > div > .lg\\:mx-3";
+//        WebElement element = find(selector);
+//
+//        withAction().moveToElement(element).click();
+//    }
+
+    public void sortingLastRules(){
+        withAction().dragAndDrop(sortingLastRulesButton,secondRule).build().perform();
+//        withAction().moveToElement(sortingLastRulesButton)
+//                .clickAndHold(sortingLastRulesButton)
+//                .moveToElement(secondRule).build();
+
+    }
 
     public void clickGroupsButton(){
         clickOn(groupsButton);
@@ -220,7 +305,7 @@ public class GroupsPage extends BasePage{
         goalsText.shouldContainOnlyText("Goal is mandatory!");
     }
 
-    public void maxNumberOfAttendee(){
+    public void maxNecessaryNumberOfAttendee(){
         maxAttendee.shouldContainOnlyText("Max attendee members is mandatory!");
     }
 
@@ -263,6 +348,49 @@ public class GroupsPage extends BasePage{
             }
         }
     }
+
+    public void completeTheDescription(String text){
+        typeInto(descriptionTextField, text);
+    }
+
+    public void completeNumberOfAttendee(String numberAttendee){
+        typeInto(maxAttendeeField, numberAttendee);
+
+    }
+
+    public void completeGoalsField(String goals){
+        typeInto(goalsTextField, goals);
+    }
+
+    public void clickSaveChangesFromGroupDetails(){
+        saveChangeButtonFromGroupDetails.click();
+    }
+
+    public void clickCancelButtonFromGroupDetails(){
+        cancelButtonFromGroupDetails.click();
+    }
+
+    public void clickGroupRules(){
+        groupRulesColumn.click();
+    }
+
+    public void deleteLastRule(){
+        deleteLastRuleButton.click();
+//        withAction().moveToElement(deleteRuleButton).build();
+        waitABit(1000);
+        getAlert().accept();
+    }
+
+    public void clickAddNewRule(){
+        addNewRuleButton.click();
+    }
+
+    public void completeLastRuleField(String text){
+        typeInto(newLastRuleFieldText,text);
+    }
+
+
+
 
 
 

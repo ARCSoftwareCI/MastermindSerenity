@@ -160,7 +160,7 @@ public class GroupsSteps extends BaseSteps{
 
     @Step
     public void emptyMaxAttendeeText(){
-        groupsPage.maxNumberOfAttendee();
+        groupsPage.maxNecessaryNumberOfAttendee();
     }
 
     @Step
@@ -206,6 +206,56 @@ public class GroupsSteps extends BaseSteps{
     @Step
     public void selectTheStartDate(String monthAndYear, int day){
         groupsPage.selectStartDate(monthAndYear, day);
+    }
+
+    @Step
+    public void completeTheDescriptionField(String description){
+        groupsPage.completeTheDescription(description);
+    }
+
+    @Step
+    public void completeTheNumberOfAttendees(String maxAttendee){
+        groupsPage.completeNumberOfAttendee(maxAttendee);
+    }
+
+    @Step
+    public void completeTheGoalsField(String goals){
+        groupsPage.completeGoalsField(goals);
+    }
+
+    @Step
+    public void clickOnSaveChangesButtonFromGroupDetails(){
+        groupsPage.clickSaveChangesFromGroupDetails();
+    }
+
+    @Step
+    public void clickOnCancelButtonFromGroupDetails(){
+        groupsPage.clickCancelButtonFromGroupDetails();
+    }
+
+   @Step
+   public void moveRuleElement(){
+        groupsPage.sortingLastRules();
+   }
+
+    @Step
+    public void clickOnRulesColumn(){
+        groupsPage.clickGroupRules();
+    }
+
+    @Step
+    public void clickOnAddNewRuleButton(){
+        groupsPage.clickAddNewRule();
+    }
+
+    @Step
+    public void completeTheLastRuleField(String text){
+        groupsPage.completeLastRuleField(text);
+    }
+
+    @Step
+    public void deleteLastRule(){
+        groupsPage.deleteLastRule();
     }
 
 

@@ -1,6 +1,9 @@
 package ro.upriserz.mastermind.Utilities;
 
+import java.util.Scanner;
+
 public class Constants {
+
 
     public static final String TESTING_EMAIL = "testingusser452@gmail.com";
 
@@ -15,4 +18,8 @@ public class Constants {
     public static final String USER_LAST = "Account";
 
     public static final String USER_NAME = USER_FIRST+USER_LAST;
+
+
+
+
 }
