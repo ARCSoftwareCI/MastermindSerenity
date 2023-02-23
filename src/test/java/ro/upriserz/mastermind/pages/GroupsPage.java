@@ -31,6 +31,9 @@ public class GroupsPage extends BasePage{
     @FindBy (css = ".bg-ms-orange-500.h-11.rounded.text-white.w-full")
     private WebElementFacade createGroupButton;
 
+    @FindBy (css = ".mb-12 > a")
+    private WebElementFacade groupPreviewButton;
+
     @FindBy (id = "description")
     private WebElementFacade descriptionTextField;
 
@@ -55,8 +58,14 @@ public class GroupsPage extends BasePage{
     @FindBy (css = ".mb-10 .h-7")
     private WebElementFacade groupIsActive;
 
+    @FindBy (css = ".mb-10 .h-7 .absolute")
+    private WebElementFacade groupIsActiveText;
+
     @FindBy (css = ".mb-9 .bottom-2")
     private WebElementFacade groupCoverPhoto;
+
+    @FindBy (css = ".inline-flex.sm\\:leading-5")
+    private WebElementFacade closeButtonGroupPhoto;
 
     @FindBy (css = " nav > a:nth-child(3)")
     private WebElementFacade unsplashGroup;
@@ -73,12 +82,6 @@ public class GroupsPage extends BasePage{
     @FindBy (css = " div.overflow-y-scroll.max-w-7xl.mx-auto.py-2.px-4.sm\\:px-6.lg\\:px-8.mt-2 > div > div:nth-child(2) > div.flex.flex-wrap > div:nth-child(1) > img")
     private WebElementFacade firstCoverPicture;
 
-    @FindBy (css = "div.max-w-1200.mx-auto.overflow-clip.w-full > div > div:nth-child(3)  button.lg\\:order-1")
-    private WebElementFacade cancelButton;
-
-    @FindBy (css = "div.max-w-1200.mx-auto.overflow-clip.w-full > div > div:nth-child(3)  button.lg\\:order-2")
-    private WebElementFacade saveChangesButton;
-
     @FindBy (css = "#erLxErYs4 > div")
     private WebElementFacade saveChangesMessage;
 
@@ -88,8 +91,11 @@ public class GroupsPage extends BasePage{
     @FindBy (css = " div.w-full.lg\\:col-span-2 > div:nth-child(2) > div > p span")
     private WebElementFacade descriptionNecessaryText;
 
-    @FindBy (css = " div:nth-child(2) > span > div.bg-white.border.border-ms-gray-300.flex.items-center.h-11.px-3.py-3.rounded.w-full")
-    private WebElementFacade startDate;
+    @FindBy (css = "div:nth-child(1) > span > div.w-full")
+    private WebElementFacade startDateDropdown;
+
+    @FindBy (css = " div:nth-child(2) > span > div.w-full")
+    private WebElementFacade endDateDropdown;
 
     @FindBy (css = " div.vc-pane-layout > div > div.vc-header.align-center > div")
     private WebElementFacade startDateSelectionText;
@@ -103,14 +109,17 @@ public class GroupsPage extends BasePage{
     @FindBy (css = "vc-weeks")
     private List<WebElementFacade> dateOptions;
 
-    @FindBy (css = ".lg\\:col-span-3.lg\\:mb-0 > div:nth-child(2) > p span")
-    private WebElementFacade endDate;
+    @FindBy (css = ".lg\\:col-span-3 > div:nth-child(1) > p span")
+    private WebElementFacade startDateNecessaryText;
 
-    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(4) > div > p span")
-    private WebElementFacade goalsText;
+    @FindBy (css = ".lg\\:col-span-3 > div:nth-child(2) > p span")
+    private WebElementFacade endDateNecessaryText;
 
-    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(7) > div > p span")
-    private WebElementFacade maxAttendee;
+    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(4)  > p span")
+    private WebElementFacade goalsNecessaryText;
+
+    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(7)  > p span")
+    private WebElementFacade maxAttendeeNecessaryText;
 
     @FindBy (css = ".text-yellow-700 p")
     private WebElementFacade priceGroupVerificationText;
@@ -128,37 +137,37 @@ public class GroupsPage extends BasePage{
     private WebElementFacade cancelButtonFromGroupRules;
 
     @FindBy (css = "li:nth-child(1) > .px-5")
-    private WebElementFacade groupDetailsColumn;
+    private WebElementFacade groupDetailsColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(2) > .px-5")
-    private WebElementFacade groupRulesColumn;
+    private WebElementFacade groupRulesColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(3) > .px-5")
-    private WebElementFacade groupJoinRequestColumn;
+    private WebElementFacade groupJoinRequestFieldsColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(4) > .px-5")
-    private WebElementFacade groupPriceColumn;
+    private WebElementFacade groupPriceColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(5) > .px-5")
-    private WebElementFacade groupLegalColumn;
+    private WebElementFacade groupLegalColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(6) > .px-5")
-    private WebElementFacade groupAdministratorsColumn;
+    private WebElementFacade groupAdministratorsColumnFromEditGroup;
 
     @FindBy (css = "li:nth-child(7) > .px-5")
-    private WebElementFacade groupGamificationColumn;
+    private WebElementFacade groupGamificationColumnFromEditGroup;
 
     @FindBy (css = "div > div> div > div > div > div:nth-child(4) > .text-lg")
     private WebElementFacade groupRulesColumnVerificationText;
 
     @FindBy (css = "div > div> div > div > div > div:nth-child(5) > .text-lg")
-    private WebElementFacade groupJoinRequestFieldColumnVerificationText;
+    private WebElementFacade groupJoinRequestFieldsColumnVerificationText;
 
     @FindBy (css = "div > div> div > div > div > div:nth-child(7) > .text-lg")
     private WebElementFacade groupLegalColumnVerificationText;
 
     @FindBy (css = "div > div> div > div > div > div:nth-child(8) > .text-lg")
-    private WebElementFacade getGroupAdministratorsColumnVerificationText;
+    private WebElementFacade groupAdministratorsColumnVerificationText;
 
     @FindBy (css = "#app > div > div > div > div > div > div:nth-child(4) > button" )
     private WebElementFacade addNewRuleButton;
@@ -174,22 +183,121 @@ public class GroupsPage extends BasePage{
 
     @FindBy (css =  "ul > li:nth-child(2) > div > .sorting-handle svg")
     private WebElementFacade secondRule;
-//    private int n;
-//    @FindBy (css = GroupsPage.getSelector(this.n))
-//    private WebElementFacade deleteButtonFromWhichRuleNumberYouSay;
-//
-//    public GroupsPage(int n) {
-//        this.n = n;
-//    }
-//    public static String getSelector(int n) {
-//        return "ul > li:nth-child(" + n + ") > div > .lg\\:mx-3";
-//    }
-//    public void moveToDelete(int n){
-//        String selector = "ul > li:nth-child(" + n + ") > div > .lg\\:mx-3";
-//        WebElement element = find(selector);
-//
-//        withAction().moveToElement(element).click();
-//    }
+
+    @FindBy (id = "requirement")
+    private WebElementFacade joinRequestRequirementField;
+
+    @FindBy (css = "div > div:nth-child(5) > div > div > div> div > div > div > button" )
+    private WebElementFacade joinRequestTypeDropdown;
+
+    @FindBy (css = ".h-11 label:nth-child(1) .cursor-pointer")
+    private WebElementFacade evaluationNumberRequirementsSmallerYes;
+
+    @FindBy (css = ".h-11 label:nth-child(2) .cursor-pointer")
+    private WebElementFacade evaluationNumberRequirementsBiggerNo;
+
+    @FindBy (id = "points")
+    private WebElementFacade joinRequestPoints;
+
+    @FindBy (css = " div > div:nth-child(5) >div > div > div > button > span.left-3")
+    private WebElementFacade isRequiredVerificationText;
+
+    @FindBy (css = " div > div:nth-child(5) >div > div > div > button > span.transform")
+    private WebElementFacade isRequiredSwitch;
+
+    @FindBy (css = ".mt-6 button")
+    private WebElementFacade createRequestButton;
+
+    @FindBy (id = "price")
+    private WebElementFacade priceField;
+
+    @FindBy (css = "div:nth-child(6) > div > button")
+    private WebElementFacade savePriceButton;
+
+    @FindBy (id = "contract")
+    private WebElementFacade contractField;
+
+    @FindBy (css = "div:nth-child(7) > div:nth-child(3) > div > a")
+    private WebElementFacade previewContractButton;
+
+    @FindBy (id = "confidentiality_agreement")
+    private WebElementFacade confidentialityAgreementField;
+
+    @FindBy (css = "div:nth-child(7) > div:nth-child(4) > div > a")
+    private WebElementFacade previewConfidentialityAgreementButton;
+
+    @FindBy (id = "email")
+    private WebElementFacade addUserAdministratorField;
+
+    @FindBy (css = " div:nth-child(8) > div > button")
+    private WebElementFacade addAdministratorButton;
+
+    @FindBy (css = " div:nth-child(8) > div:nth-child(5) > div > div > div > button > svg")
+    private WebElementFacade deleteAdministrator;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(1) > div > div:nth-child(1) > div > button > span.absolute")
+    private WebElementFacade gamificationOneSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(1) > div > div:nth-child(1) > div > button .pointer-events-none")
+    private WebElementFacade gamificationOneSwitch;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(2) > div > div > button > span.absolute")
+    private WebElementFacade gamificationTwoSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(2) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationTwoSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(2) #points")
+    private WebElementFacade gamificationTwoPointsField;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(3) > div > div > button > span.absolute")
+    private WebElementFacade gamificationThreeSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(3) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationThreeSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(3) #points")
+    private WebElementFacade gamificationThreePointsField;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(4) > div > div > button > span.absolute")
+    private WebElementFacade gamificationFourSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(4) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationFourSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(4) #points")
+    private WebElementFacade gamificationFourPointsField;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(5) > div > div > button > span.absolute")
+    private WebElementFacade gamificationFiveSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(5) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationFiveSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(5) #points")
+    private WebElementFacade gamificationFivePointsField;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(6) > div > div > button > span.absolute")
+    private WebElementFacade gamificationSixSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(6) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationSixSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(6) #points")
+    private WebElementFacade gamificationSixPointsField;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(7) > div > div > button > span.absolute")
+    private WebElementFacade gamificationSevenSwitchText;
+
+    @FindBy (css = " div:nth-child(9) > div:nth-child(7) > div > div > button .pointer-events-none")
+    private WebElementFacade gamificationSevenSwitch;
+
+    @FindBy (css = "div:nth-child(9) > div:nth-child(7) #points")
+    private WebElementFacade gamificationSevenPointsField;
+
+    @FindBy (css = ".h-11.mr-0")
+    private WebElementFacade applyGamificationButton;
+
 
     public void sortingLastRules(){
         withAction().dragAndDrop(sortingLastRulesButton,secondRule).build().perform();
@@ -223,6 +331,10 @@ public class GroupsPage extends BasePage{
         clickOn(createGroupButton);
     }
 
+    public void clickOnPreviewTheGroup(){
+        groupPreviewButton.click();
+    }
+
     public void selectFrequency(String frequencyName){
         selectFromDropdown(groupFrequency,frequencyName);
     }
@@ -243,6 +355,13 @@ public class GroupsPage extends BasePage{
         clickOn(groupIsActive);
     }
 
+    public boolean verifyIfGroupIsActive(){
+        if (groupIsActive.getText().equals("Off")){
+            return false;
+        }
+        return true;
+    }
+
     public void clickChangeCoverPhoto(){
         clickOn(groupCoverPhoto);
     }
@@ -256,24 +375,16 @@ public class GroupsPage extends BasePage{
     }
 
     public void selectFirstResultUnsplash(){
-        unsplashSearchResult.get(0).isVisible();
-        cliick();
-    }
+        unsplashSearchResult.get(0).click();
 
-    private void cliick() {
-        cliick();
     }
 
     public void selectFirstCoverGroupPicture(){
         clickOn(firstCoverPicture);
     }
 
-    public void clickCancelButton(){
-        clickOn(cancelButton);
-    }
-
-    public void clickOnSaveChangesButton(){
-        clickOn(saveChangesButton);
+    public void clickCloseButtonFromGroupPhoto(){
+        clickOn(closeButtonGroupPhoto);
     }
 
     public void saveChangesGood(){
@@ -285,7 +396,15 @@ public class GroupsPage extends BasePage{
 
     }
 
-    public void changeCoverPhotoText(){
+    public void clickOnStartDateDropdown(){
+        startDateDropdown.click();
+    }
+
+    public void clickOnEndDateDropdown(){
+        endDateDropdown.click();
+    }
+
+    public void changeCoverPhotoNecessaryText(){
         coverPhotoNecessaryText.shouldContainOnlyText("Cover photo is mandatory!");
     }
 
@@ -294,19 +413,19 @@ public class GroupsPage extends BasePage{
     }
 
     public void startDateNecessaryText(){
-        startDate.shouldContainOnlyText("Start is mandatory!");
+        startDateNecessaryText.shouldContainOnlyText("Start is mandatory!");
     }
 
     public void endDateNecessaryText(){
-        endDate.shouldContainOnlyText("End is mandatory!");
+        endDateNecessaryText.shouldContainOnlyText("End is mandatory!");
     }
 
     public void goalsNecessaryText(){
-        goalsText.shouldContainOnlyText("Goal is mandatory!");
+        goalsNecessaryText.shouldContainOnlyText("Goal is mandatory!");
     }
 
-    public void maxNecessaryNumberOfAttendee(){
-        maxAttendee.shouldContainOnlyText("Max attendee members is mandatory!");
+    public void maxNumberOfAttendeeNecessaryText(){
+        maxAttendeeNecessaryText.shouldContainOnlyText("Max attendee members is mandatory!");
     }
 
     public boolean paidGroupVerification(){
@@ -332,23 +451,6 @@ public class GroupsPage extends BasePage{
     }
 
 
-    public void selectStartDate(String monthAndYearText, int day){
-        startDate.click();
-        int counter=0;
-        int limit=12;
-        while(!startDateSelectionText.getText().contains(monthAndYearText) && counter < limit){
-            rightArrowStartDateSelection.click();
-            counter++;
-
-        }
-        for (WebElementFacade dateOption : dateOptions) {
-            if (dateOption.getText().equals(String.valueOf(day))) {
-                dateOption.click();
-                break;
-            }
-        }
-    }
-
     public void completeTheDescription(String text){
         typeInto(descriptionTextField, text);
     }
@@ -370,15 +472,14 @@ public class GroupsPage extends BasePage{
         cancelButtonFromGroupDetails.click();
     }
 
-    public void clickGroupRules(){
-        groupRulesColumn.click();
-    }
-
     public void deleteLastRule(){
         deleteLastRuleButton.click();
-//        withAction().moveToElement(deleteRuleButton).build();
         waitABit(1000);
         getAlert().accept();
+    }
+
+    public void goToGroupRulesFromDetailsGroup(){
+        groupRulesColumnFromEditGroup.click();
     }
 
     public void clickAddNewRule(){
@@ -389,10 +490,254 @@ public class GroupsPage extends BasePage{
         typeInto(newLastRuleFieldText,text);
     }
 
+    public void clickSaveButtonFromGroupRules(){
+        saveChangeButtonFromGroupRules.click();
+    }
+
+    public void clickCancelButtonFromGroupRules(){
+        cancelButtonFromGroupRules.click();
+    }
+
+    public void goToGroupDetailsFromEditingGroup(){
+        groupDetailsColumnFromEditGroup.click();
+    }
+
+    public void goToGroupJoinRequestFromEditingGroup(){
+        groupJoinRequestFieldsColumnFromEditGroup.click();
+    }
+
+    public void goToGroupPriceColumnFromEditGroup(){
+        groupPriceColumnFromEditGroup.click();
+    }
+
+    public void goToGroupLegalColumnFromEditGroup(){
+        groupLegalColumnFromEditGroup.click();
+    }
+
+    public void goToGroupAdministratorsColumnFromEditGroup(){
+        groupAdministratorsColumnFromEditGroup.click();
+    }
+
+    public void goToGroupGamificationColumnFromEditGroup(){
+        groupGamificationColumnFromEditGroup.click();
+    }
+
+    public void verifyGroupRulesColumn(){
+        groupRulesColumnVerificationText.shouldContainOnlyText("Group rules");
+    }
+
+    public void verifyJoinRequestColumn(){
+        groupJoinRequestFieldsColumnVerificationText.shouldContainOnlyText("Define requests");
+    }
+
+    public void verifyLegalColumn(){
+        groupLegalColumnVerificationText.shouldContainOnlyText("Legal");
+    }
+
+    public void verifyAdministratorsColumn(){
+        groupAdministratorsColumnVerificationText.shouldContainOnlyText("Group administrators");
+    }
+
+    public void selectTypeOfJoinRequest(String text){
+        selectFromDropdown(joinRequestTypeDropdown,text);
+    }
+
+    public void completeJoinRequestRequirementField(String text){
+        typeInto(joinRequestRequirementField,text);
+    }
+
+    public void completePointsOfRequest(double points){
+        typeInto(joinRequestPoints, String.valueOf(points));
+    }
+
+//    public void isRequiredYesText(){
+//        isRequiredVerificationText.shouldContainOnlyText("Yes");
+//    }
+//
+//    public void isRequiredNoText(){
+//        isRequiredVerificationText.shouldContainOnlyText("No");
+//    }
+
+    public boolean clickOnIsRequiredSwitch(){
+        String text = isRequiredVerificationText.getText();
+        if (text.equals("Yes")) {
+            return true;
+        } else {
+            isRequiredSwitch.click();
+        }
+        return false;
+    }
+
+    public void clickOnEvaluationSmallerAndYes(){
+        evaluationNumberRequirementsSmallerYes.click();
+    }
+
+    public void clickOnEvaluationBiggerAndNo(){
+        evaluationNumberRequirementsBiggerNo.click();
+    }
+
+    public void clickCreateRequest(){
+        createRequestButton.click();
+    }
+
+    public void completePriceField(double price){
+        typeInto(priceField, String.valueOf(price));
+    }
+
+    public void clickOnSavePrice(){
+        savePriceButton.click();
+    }
+
+    public void completeContractField(String contractText){
+        typeInto(contractField, contractText);
+    }
+
+    public void clickPreviewContract(){
+        clickOn(previewContractButton);
+    }
+
+    public void completeConfidentialityAgreementField(String confidentialityAgreement){
+        typeInto(confidentialityAgreementField,confidentialityAgreement);
+    }
+
+    public void clickPreviewConfidentialityAgreement(){
+        clickOn(previewConfidentialityAgreementButton);
+    }
 
 
+    public void completeAddUserAdministratorField(String administrator){
+        typeInto(addUserAdministratorField, administrator);
+    }
+
+    public void clickAddUserAdministrator(){
+        addAdministratorButton.click();
+    }
+
+    public void clickDeleteAdministrator(){
+        deleteAdministrator.click();
+    }
+
+    public void clickOnGamificationOneSwitch(){
+        gamificationOneSwitch.click();
+    }
+
+    public boolean gamificationOneYesNoSwitchText(){
+        String text = gamificationOneSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void clickOnGamificationTwoSwitch(){
+        gamificationTwoSwitch.click();
+    }
+
+    public boolean gamificationTwoYesNoSwitchText(){
+        String text = gamificationTwoSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationTwoPointsField(double points){
+        typeInto(gamificationTwoPointsField, String.valueOf(points));
+    }
+
+    public void clickOnGamificationThreeSwitch(){
+        gamificationThreeSwitch.click();
+    }
+
+    public boolean gamificationThreeYesNoSwitchText(){
+        String text = gamificationThreeSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationThreePointsField(double points){
+        typeInto(gamificationThreePointsField, String.valueOf(points));
+    }
+
+    public void clickOnGamificationFourSwitch(){
+        gamificationFourSwitch.click();
+    }
+
+    public boolean gamificationFourYesNoSwitchText(){
+        String text = gamificationFourSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationFourPointsField(double points){
+        typeInto(gamificationFourPointsField, String.valueOf(points));
+    }
 
 
+    public void clickOnGamificationFiveSwitch(){
+        gamificationFiveSwitch.click();
+    }
+
+    public boolean gamificationFiveYesNoSwitchText(){
+        String text = gamificationFiveSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationFivePointsField(double points){
+        typeInto(gamificationFivePointsField, String.valueOf(points));
+    }
+
+
+    public void clickOnGamificationSixSwitch(){
+        gamificationSixSwitch.click();
+    }
+
+    public boolean gamificationSixYesNoSwitchText(){
+        String text = gamificationSixSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationSixPointsField(double points){
+        typeInto(gamificationSixPointsField, String.valueOf(points));
+    }
+
+    public void clickOnGamificationSevenSwitch(){
+        gamificationSevenSwitch.click();
+    }
+
+    public boolean gamificationSevenYesNoSwitchText(){
+        String text = gamificationSevenSwitchText.getText();
+        if (text.equals("Off")){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public void completeGamificationSevenPointsField(double points){
+        typeInto(gamificationSevenPointsField, String.valueOf(points));
+    }
+
+
+    public void clickOnApplyGamificationButton(){
+        applyGamificationButton.click();
+    }
 
 
 

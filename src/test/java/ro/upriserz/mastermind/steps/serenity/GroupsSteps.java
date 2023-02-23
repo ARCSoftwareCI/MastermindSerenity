@@ -60,6 +60,10 @@ public class GroupsSteps extends BaseSteps{
         clickCreateGroupButton();
     }
 
+    @Step
+    public void verifyIfAnGroupIsActive(){
+        groupsPage.verifyIfGroupIsActive();
+    }
 
     @Step
     public void selectGroupFrequency(String frequency){
@@ -114,13 +118,8 @@ public class GroupsSteps extends BaseSteps{
     }
 
     @Step
-    public void clickOnCancelButtonFromChangeCoverPhoto(){
-        groupsPage.clickCancelButton();
-    }
-
-    @Step
-    public void clickOnSaveChangeCoverPhoto(){
-        groupsPage.clickOnSaveChangesButton();
+    public void clickOnCloseButtonFromChangeCoverPhoto(){
+        groupsPage.clickCloseButtonFromGroupPhoto();
     }
 
     @Step
@@ -135,7 +134,7 @@ public class GroupsSteps extends BaseSteps{
 
     @Step
     public void noPhotoCoverText(){
-        groupsPage.changeCoverPhotoText();
+        groupsPage.changeCoverPhotoNecessaryText();
     }
 
     @Step
@@ -160,7 +159,7 @@ public class GroupsSteps extends BaseSteps{
 
     @Step
     public void emptyMaxAttendeeText(){
-        groupsPage.maxNecessaryNumberOfAttendee();
+        groupsPage.maxNumberOfAttendeeNecessaryText();
     }
 
     @Step
@@ -184,28 +183,13 @@ public class GroupsSteps extends BaseSteps{
     }
 
     @Step
-    public void changeTheCoverPhoto(String search){
-        clickOnChangeCoverPhoto();
-        selectFromUnsplash();
-        inputUnsplashTextField(search);
-        clickSearchButtonFromUnsplash();
-        selectFirstResultFromUnsplashSearch();
-        selectFirstCoverPhotoGroup();
-        clickOnSaveChangeCoverPhoto();
-        saveCoverPhotoGoodText();
+    public void clickOnTheStartDateDropdown(){
+        groupsPage.clickOnStartDateDropdown();
     }
 
     @Step
-    public void changeCovePhotoFromMediaItems(){
-        clickOnChangeCoverPhoto();
-        selectFirstCoverPhotoGroup();
-        clickOnSaveChangeCoverPhoto();
-        saveCoverPhotoGoodText();
-    }
-
-    @Step
-    public void selectTheStartDate(String monthAndYear, int day){
-        groupsPage.selectStartDate(monthAndYear, day);
+    public void clickOnTheEndDateDropdown(){
+        groupsPage.clickOnEndDateDropdown();
     }
 
     @Step
@@ -238,10 +222,6 @@ public class GroupsSteps extends BaseSteps{
         groupsPage.sortingLastRules();
    }
 
-    @Step
-    public void clickOnRulesColumn(){
-        groupsPage.clickGroupRules();
-    }
 
     @Step
     public void clickOnAddNewRuleButton(){
