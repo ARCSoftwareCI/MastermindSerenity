@@ -71,5 +71,8 @@ public class BasePage extends PageObject {
         waitABit(second);
     }
 
+    public static String getJoinRequestRequirementTypeSelector(int x) {
+        return "div > div> div> :nth-child(" + x + ") .mb-4";
+    }
 
 }

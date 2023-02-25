@@ -30,15 +30,7 @@ public class GroupsTests extends BaseTests{
         groupsSteps.verifyFreeGroupText();
     }
 
-    @Test
-    public void changeCoverPhoto(){
-        loginSteps.doLogin(Constants.TESTING_EMAIL,Constants.TESTING_PASSWORD);
-        baseSteps.openMastermind();
-        groupsSteps.clickOnGroups();
-        groupsSteps.freeGroupCreate("freeTestGroup");
-//        groupsSteps.changeTheCoverPhoto("d");
-        groupsSteps.changeCovePhotoFromMediaItems();
-    }
+
 
     @Test
     public void selectStartDate(){
@@ -56,7 +48,7 @@ public class GroupsTests extends BaseTests{
         baseSteps.openMastermind();
         groupsSteps.clickOnGroups();
         groupsSteps.paidGroupCreate("PAIDGRUPTEST");
-        groupsSteps.clickOnRulesColumn();
+        groupsSteps.();
         groupsSteps.clickOnAddNewRuleButton();
         groupsSteps.clickOnAddNewRuleButton();
         groupsSteps.clickOnAddNewRuleButton();

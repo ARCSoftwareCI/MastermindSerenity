@@ -2,9 +2,10 @@ package ro.upriserz.mastermind.pages;
 
 
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import ro.upriserz.mastermind.Utilities.Constants;
 
-//
 
 import java.util.List;
 
@@ -199,11 +200,14 @@ public class GroupsPage extends BasePage{
     @FindBy (id = "points")
     private WebElementFacade joinRequestPoints;
 
-    @FindBy (css = " div > div:nth-child(5) >div > div > div > button > span.left-3")
+    @FindBy (css = " :nth-child(5) >div > div > div > button > span.left-3")
     private WebElementFacade isRequiredVerificationText;
 
-    @FindBy (css = " div > div:nth-child(5) >div > div > div > button > span.transform")
+    @FindBy (css = " :nth-child(5) >div > div > div > button > span.transform")
     private WebElementFacade isRequiredSwitch;
+
+    @FindBy (css = "li:nth-child(4) > div > div> div> :nth-child(1) .mb-4")
+    private WebElementFacade joinRequestRequirementType;
 
     @FindBy (css = ".mt-6 button")
     private WebElementFacade createRequestButton;
@@ -228,6 +232,9 @@ public class GroupsPage extends BasePage{
 
     @FindBy (id = "email")
     private WebElementFacade addUserAdministratorField;
+
+    @FindBy (css = ".text-red-400.pt-1 span")
+    private WebElementFacade emailAdministratorVerificationText;
 
     @FindBy (css = " div:nth-child(8) > div > button")
     private WebElementFacade addAdministratorButton;
@@ -538,6 +545,8 @@ public class GroupsPage extends BasePage{
         groupAdministratorsColumnVerificationText.shouldContainOnlyText("Group administrators");
     }
 
+
+
     public void selectTypeOfJoinRequest(String text){
         selectFromDropdown(joinRequestTypeDropdown,text);
     }
@@ -558,15 +567,14 @@ public class GroupsPage extends BasePage{
 //        isRequiredVerificationText.shouldContainOnlyText("No");
 //    }
 
-    public boolean clickOnIsRequiredSwitch(){
+    public boolean clickOnIsRequiredSwitch() {
         String text = isRequiredVerificationText.getText();
-        if (text.equals("Yes")) {
-            return true;
-        } else {
+        if (!text.equals("Yes")) {
             isRequiredSwitch.click();
         }
-        return false;
+        return true;
     }
+
 
     public void clickOnEvaluationSmallerAndYes(){
         evaluationNumberRequirementsSmallerYes.click();
@@ -605,17 +613,38 @@ public class GroupsPage extends BasePage{
     }
 
 
-    public void completeAddUserAdministratorField(String administrator){
-        typeInto(addUserAdministratorField, administrator);
+    public void completeAddUserAdministratorField(String administratorEmail){
+        typeInto(addUserAdministratorField, administratorEmail);
     }
 
     public void clickAddUserAdministrator(){
         addAdministratorButton.click();
     }
 
+    public void addAnAdministrator(String administratorEmail){
+        completeAddUserAdministratorField(administratorEmail);
+        clickAddUserAdministrator();
+    }
+    public void verifyWrongEmailUserAdministrator(){
+        emailAdministratorVerificationText.shouldContainOnlyText(" User not found!");
+    }
+
+    public void verifyAddedUserAdministrator(){
+        emailAdministratorVerificationText.shouldContainOnlyText("User is already a member of this group!" );
+    }
+
     public void clickDeleteAdministrator(){
         deleteAdministrator.click();
+        getAlert().accept();
     }
+
+    public void addAndDeleteAdministrator(String administratorEmail, int numberOfTimes) {
+        for (int i = 1; i <= numberOfTimes; i++) {
+            addAnAdministrator(administratorEmail);
+            clickDeleteAdministrator();
+        }
+    }
+
 
     public void clickOnGamificationOneSwitch(){
         gamificationOneSwitch.click();

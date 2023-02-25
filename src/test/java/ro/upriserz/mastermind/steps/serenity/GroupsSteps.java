@@ -173,7 +173,7 @@ public class GroupsSteps extends BaseSteps{
     }
 
     @Step
-    public void verifyEmptyFieldsGroupSave() {
+    public void verifyEmptyFieldsGroupDetails() {
         noPhotoCoverText();
         emptyDescriptionText();
         emptyStartDateText();
@@ -222,6 +222,15 @@ public class GroupsSteps extends BaseSteps{
         groupsPage.sortingLastRules();
    }
 
+    @Step
+    public void clickPreviewTheGroup(){
+        groupsPage.clickOnPreviewTheGroup();
+    }
+
+    @Step
+    public void clickOnRuleColumnFromGroupDetails(){
+        groupsPage.goToGroupRulesFromDetailsGroup();
+    }
 
     @Step
     public void clickOnAddNewRuleButton(){
@@ -238,6 +247,29 @@ public class GroupsSteps extends BaseSteps{
         groupsPage.deleteLastRule();
     }
 
+    @Step
+    public void clickOnJoinRequestColumnFromGroupDetails(){
+        groupsPage.goToGroupJoinRequestFromEditingGroup();
+    }
 
+    @Step
+    public void clickOnPriceColumnFromGroupDetails(){
+        groupsPage.goToGroupPriceColumnFromEditGroup();
+    }
+
+    @Step
+    public void clickOnLegalColumnFromGroupDetails(){
+        groupsPage.goToGroupLegalColumnFromEditGroup();
+    }
+
+    @Step
+    public void clickOnAdministratorsColumnFromGroupDetails(){
+        groupsPage.goToGroupAdministratorsColumnFromEditGroup();
+    }
+
+    @Step
+    public void clickOnGamificationColumnFromGroupDetails(){
+        groupsPage.goToGroupGamificationColumnFromEditGroup();
+    }
 
 }

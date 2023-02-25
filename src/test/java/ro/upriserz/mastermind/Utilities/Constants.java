@@ -19,6 +19,9 @@ public class Constants {
 
     public static final String USER_NAME = USER_FIRST+USER_LAST;
 
+    public static final String XPATH_SELECTOR = "li:nth-child(4) > div > div > div > :nth-child(%d) .mb-4";
+
+
 
 
 
