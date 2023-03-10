@@ -9,7 +9,7 @@ public class LoginSteps extends BaseSteps{
     private LoginPage loginPage;
 
     @Step
-    public void goToLogin(){
+    public void goToLoginPage(){
         openHomePage();
         basePage.clickOnLoginButton();
         loginPage.verificationLoginPageText();
@@ -78,7 +78,7 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void isCheckboxChecked(){
-        goToLogin();
+        goToLoginPage();
         clickRememberMeCheckBox();
         loginPage.clickLoginButton();
         loginPage.isCheckBoxDisplayed();
@@ -92,7 +92,7 @@ public class LoginSteps extends BaseSteps{
 
     @Step
     public void doLogin(String email, String password) {
-        goToLogin();
+        goToLoginPage();
         loginPage.setEmailField(email);
         loginPage.setPasswordField(password);
         loginPage.clickLoginButton();

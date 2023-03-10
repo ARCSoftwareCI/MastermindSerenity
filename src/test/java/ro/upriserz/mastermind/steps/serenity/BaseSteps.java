@@ -49,7 +49,7 @@ public class BaseSteps extends ScenarioSteps {
     @Step
     public void mastermindDashboardPage(String email,String password){
         loginSteps.doLogin(email, password);
-        dashboard.open();
+        openMastermind();
 
     }
 

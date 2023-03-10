@@ -1,10 +1,9 @@
 package ro.upriserz.mastermind.pages;
 
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import ro.upriserz.mastermind.Utilities.Constants;
 
 
 import java.util.List;
@@ -35,6 +34,9 @@ public class GroupsPage extends BasePage{
     @FindBy (css = ".mb-12 > a")
     private WebElementFacade groupPreviewButton;
 
+    @FindBy (css = ".mb-12.text-2xl")
+    private WebElementFacade groupNamePreviewText;
+
     @FindBy (id = "description")
     private WebElementFacade descriptionTextField;
 
@@ -44,8 +46,11 @@ public class GroupsPage extends BasePage{
     @FindBy (id = "goals")
     private WebElementFacade goalsTextField;
 
-    @FindBy (css = ".col-span-2 .w-full .relative .bg-white")
+    @FindBy (css = ".col-span-2 .relative")
     private WebElementFacade groupFrequency;
+
+    @FindBy (css = ".absolute.p-3")
+    private List<WebElementFacade> groupFrequencyList;
 
     @FindBy (css = "div.w-full.lg\\:col-span-2 > div:nth-child(5) .w-full .w-full .relative .bg-white")
     private WebElementFacade groupTimeZone;
@@ -65,6 +70,9 @@ public class GroupsPage extends BasePage{
     @FindBy (css = ".mb-9 .bottom-2")
     private WebElementFacade groupCoverPhoto;
 
+    @FindBy (css = " .image-thumb-container div:first-child img")
+    private WebElementFacade firstPhotoFromMediaItemsCoverPhoto;
+
     @FindBy (css = ".inline-flex.sm\\:leading-5")
     private WebElementFacade closeButtonGroupPhoto;
 
@@ -83,20 +91,17 @@ public class GroupsPage extends BasePage{
     @FindBy (css = " div.overflow-y-scroll.max-w-7xl.mx-auto.py-2.px-4.sm\\:px-6.lg\\:px-8.mt-2 > div > div:nth-child(2) > div.flex.flex-wrap > div:nth-child(1) > img")
     private WebElementFacade firstCoverPicture;
 
-    @FindBy (css = "#erLxErYs4 > div")
-    private WebElementFacade saveChangesMessage;
-
-    @FindBy (css = ".mb-9 .text-xs span ")
-    private WebElementFacade coverPhotoNecessaryText;
-
-    @FindBy (css = " div.w-full.lg\\:col-span-2 > div:nth-child(2) > div > p span")
-    private WebElementFacade descriptionNecessaryText;
-
     @FindBy (css = "div:nth-child(1) > span > div.w-full")
     private WebElementFacade startDateDropdown;
 
+    @FindBy (css = "div:nth-child(1) > span .vc-weeks")
+    private WebElementFacade startDateDaysTable;
+
     @FindBy (css = " div:nth-child(2) > span > div.w-full")
     private WebElementFacade endDateDropdown;
+
+    @FindBy (css = "div:nth-child(2) > span .vc-weeks")
+    private WebElementFacade endDateDaysTable;
 
     @FindBy (css = " div.vc-pane-layout > div > div.vc-header.align-center > div")
     private WebElementFacade startDateSelectionText;
@@ -110,16 +115,25 @@ public class GroupsPage extends BasePage{
     @FindBy (css = "vc-weeks")
     private List<WebElementFacade> dateOptions;
 
+    @FindBy (css = "div .toasted.bubble")
+    private WebElementFacade saveChangesMessage;
+
+    @FindBy (css = ".mb-9 .text-xs span ")
+    private WebElementFacade coverPhotoNecessaryText;
+
+    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(2) > div span")
+    private WebElementFacade descriptionNecessaryText;
+
     @FindBy (css = ".lg\\:col-span-3 > div:nth-child(1) > p span")
     private WebElementFacade startDateNecessaryText;
 
     @FindBy (css = ".lg\\:col-span-3 > div:nth-child(2) > p span")
     private WebElementFacade endDateNecessaryText;
 
-    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(4)  > p span")
+    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(4) > div span")
     private WebElementFacade goalsNecessaryText;
 
-    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(7)  > p span")
+    @FindBy (css = ".lg\\:col-span-2 > div:nth-child(7) > div span")
     private WebElementFacade maxAttendeeNecessaryText;
 
     @FindBy (css = ".text-yellow-700 p")
@@ -342,9 +356,24 @@ public class GroupsPage extends BasePage{
         groupPreviewButton.click();
     }
 
-    public void selectFrequency(String frequencyName){
-        selectFromDropdown(groupFrequency,frequencyName);
+    public void groupNameFromPreview(String groupName){
+        groupNamePreviewText.shouldContainOnlyText(groupName);
     }
+
+    public void clickSelectFrequency(){
+        clickOn(groupFrequency);
+    }
+
+    public void selectFrequency(String frequencyName){
+        groupFrequency.click();
+        for (WebElementFacade option : groupFrequencyList) {
+            if (option.getText().equalsIgnoreCase(frequencyName)) {
+                option.click();
+                break;
+            }
+        }
+    }
+
 
     public void selectTimeZone(String timeZone){
         selectFromDropdown(groupTimeZone,timeZone);
@@ -373,6 +402,10 @@ public class GroupsPage extends BasePage{
         clickOn(groupCoverPhoto);
     }
 
+    public void selectFirstPhotoFromMediaItemsCoverPhoto(){
+        clickOn(firstPhotoFromMediaItemsCoverPhoto);
+    }
+
     public void clickSelectFromUnsplash(){
         waitFor(unsplashGroup).click();
     }
@@ -395,11 +428,11 @@ public class GroupsPage extends BasePage{
     }
 
     public void saveChangesGood(){
-        saveChangesMessage.containsElements("Group updated!");
+        saveChangesMessage.containsText("Group updated!");
     }
 
     public void saveChangesError(){
-        saveChangesMessage.containsElements("Error!");
+        saveChangesMessage.containsText("Error!");
 
     }
 
@@ -407,8 +440,18 @@ public class GroupsPage extends BasePage{
         startDateDropdown.click();
     }
 
+    public void selectStartDay(int day) {
+        String dayCssSelector = ".day-" + day;
+        startDateDaysTable.find(By.cssSelector(dayCssSelector)).click();
+    }
+
     public void clickOnEndDateDropdown(){
         endDateDropdown.click();
+    }
+
+    public void selectEndDay(int day) {
+        String dayCssSelector = ".day-" + day;
+        endDateDaysTable.find(By.cssSelector(dayCssSelector)).click();
     }
 
     public void changeCoverPhotoNecessaryText(){
@@ -443,14 +486,13 @@ public class GroupsPage extends BasePage{
              return false;
     }
 
-    public boolean freeGroupVerification(){
+    public void freeGroupVerification(){
         if (priceGroupVerificationText.isVisible()){
-            return true;
+            System.out.println("This is a paid group");
         }else{
             System.out.println("Element not found!\n" +
                     "This is a free group");
         }
-        return false;
     }
 
     public void clickOnSearchButtonFromUnsplash(){
@@ -462,8 +504,8 @@ public class GroupsPage extends BasePage{
         typeInto(descriptionTextField, text);
     }
 
-    public void completeNumberOfAttendee(String numberAttendee){
-        typeInto(maxAttendeeField, numberAttendee);
+    public void completeNumberOfAttendee(double numberAttendee){
+        typeInto(maxAttendeeField, String.valueOf(numberAttendee));
 
     }
 
@@ -569,7 +611,7 @@ public class GroupsPage extends BasePage{
 
     public boolean clickOnIsRequiredSwitch() {
         String text = isRequiredVerificationText.getText();
-        if (!text.equals("Yes")) {
+        if (!text.equals("No")) {
             isRequiredSwitch.click();
         }
         return true;
@@ -584,7 +626,7 @@ public class GroupsPage extends BasePage{
         evaluationNumberRequirementsBiggerNo.click();
     }
 
-    public void clickCreateRequest(){
+    public void clickCreateJoinRequest(){
         createRequestButton.click();
     }
 
@@ -654,9 +696,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationOneSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void clickOnGamificationTwoSwitch(){
@@ -667,9 +708,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationTwoSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationTwoPointsField(double points){
@@ -684,9 +724,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationThreeSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationThreePointsField(double points){
@@ -701,9 +740,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationFourSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationFourPointsField(double points){
@@ -719,9 +757,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationFiveSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationFivePointsField(double points){
@@ -737,9 +774,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationSixSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationSixPointsField(double points){
@@ -754,9 +790,8 @@ public class GroupsPage extends BasePage{
         String text = gamificationSevenSwitchText.getText();
         if (text.equals("Off")){
             return false;
-        }else {
-            return true;
-        }
+        }else return text.equals("On");
+
     }
 
     public void completeGamificationSevenPointsField(double points){
