@@ -2,14 +2,14 @@ package ro.upriserz.mastermind.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import ro.upriserz.mastermind.pages.BasePage;
-import ro.upriserz.mastermind.pages.Dashboard;
+import ro.upriserz.mastermind.pages.DashboardPage;
 import ro.upriserz.mastermind.pages.GroupsPage;
 import ro.upriserz.mastermind.pages.LoginPage;
 
 public class GroupsSteps extends BaseSteps{
 
     private BasePage basePage;
-    private Dashboard dashboard;
+    private DashboardPage dashboard;
     private LoginPage loginPage;
     private LoginSteps loginSteps;
     private GroupsPage groupsPage;
@@ -644,20 +644,21 @@ public class GroupsSteps extends BaseSteps{
         clickOnGroups();
         freeGroupCreate(groupName);
         completeTheDescriptionField(description);
-//        selectGroupWeeklyFrequency();
         clickOnSelectFrequency();
+        selectGroupBiMonthlyFrequency();
 
-        waitTime(3000);
+        waitTime(1000);
         selectStartDate(startDate);
-        waitTime(3000);
+//        waitTime(3000);
         selectEndDate(endDate);
         completeTheGoalsField(goals);
 //        selectGroupEnglishLanguage();
         completeTheNumberOfAttendees(numberOfAttendees);
-        selectGroupPublicAccess();
+//        selectGroupPublicAccess();
         switchGroupActive();
         clickOnSaveChangesButtonFromGroupDetails();
         saveChangesGoodMessage();
+        waitTime(1000);
 
     }
 

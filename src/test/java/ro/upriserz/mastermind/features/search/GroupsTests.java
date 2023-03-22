@@ -44,6 +44,17 @@ public class GroupsTests extends BaseTests{
     }
 
     @Test
+    public void selectEndDate(){
+        loginSteps.doLogin(Constants.TESTING_EMAIL,Constants.TESTING_PASSWORD);
+        baseSteps.openMastermind();
+        groupsSteps.clickOnGroups();
+        groupsSteps.freeGroupCreate("testFreeGroup");
+        groupsSteps.clickOnTheEndDateDropdown();
+        groupsSteps.selectEndDate(12);
+        baseSteps.waitTime(500);
+    }
+
+    @Test
     public void deleteRule(){
         loginSteps.doLogin(Constants.TESTING_EMAIL,Constants.TESTING_PASSWORD);
         baseSteps.openMastermind();

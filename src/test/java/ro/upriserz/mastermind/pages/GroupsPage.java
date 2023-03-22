@@ -4,6 +4,8 @@ package ro.upriserz.mastermind.pages;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 
 import java.util.List;
@@ -50,15 +52,15 @@ public class GroupsPage extends BasePage{
     private WebElementFacade groupFrequency;
 
     @FindBy (css = ".absolute.p-3")
-    private List<WebElementFacade> groupFrequencyList;
+    private WebElementFacade groupFrequencyList;
 
-    @FindBy (css = "div.w-full.lg\\:col-span-2 > div:nth-child(5) .w-full .w-full .relative .bg-white")
+    @FindBy (css = "div:nth-child(5) .w-full  .relative .bg-white")
     private WebElementFacade groupTimeZone;
 
-    @FindBy (css = "div.w-full.lg\\:col-span-2 > div:nth-child(6) .w-full .w-full .relative .bg-white")
+    @FindBy (css = " div:nth-child(6) .w-full .relative .bg-white")
     private WebElementFacade groupLanguage;
 
-    @FindBy (css = "div.w-full.lg\\:col-span-2 > div:nth-child(8) .w-full .w-full .relative .bg-white")
+    @FindBy (css = "div:nth-child(8) .w-full .relative .bg-white")
     private WebElementFacade groupAccess;
 
     @FindBy (css = ".mb-10 .h-7")
@@ -364,17 +366,15 @@ public class GroupsPage extends BasePage{
         clickOn(groupFrequency);
     }
 
-    public void selectFrequency(String frequencyName){
-        groupFrequency.click();
-        for (WebElementFacade option : groupFrequencyList) {
-            if (option.getText().equalsIgnoreCase(frequencyName)) {
-                option.click();
-                break;
-            }
-        }
+    public void selectFrequency(String frequencyName) {
+//        groupFrequency.click();
+//        for (WebElementFacade option : groupFrequencyList) {
+//            if (option.getText().equalsIgnoreCase(frequencyName)) {
+//                option.click();
+//                break;
+//            }
+//        }
     }
-
-
     public void selectTimeZone(String timeZone){
         selectFromDropdown(groupTimeZone,timeZone);
     }

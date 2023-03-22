@@ -7,10 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import ro.upriserz.mastermind.steps.serenity.BaseSteps;
-import ro.upriserz.mastermind.steps.serenity.GroupsSteps;
-import ro.upriserz.mastermind.steps.serenity.LoginSteps;
-import ro.upriserz.mastermind.steps.serenity.SearchSteps;
+import ro.upriserz.mastermind.steps.serenity.*;
 
 @RunWith(SerenityRunner.class)
 public class BaseTests {
@@ -25,10 +22,12 @@ public class BaseTests {
     protected BaseSteps baseSteps;
 
     @Steps
-    protected SearchSteps searchSteps;
+    protected SearchPageSteps searchPageSteps;
 
     @Steps
     protected GroupsSteps groupsSteps;
+
+
 
     @Before
     public void maximize(){

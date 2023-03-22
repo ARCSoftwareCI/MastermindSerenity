@@ -2,16 +2,16 @@ package ro.upriserz.mastermind.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import ro.upriserz.mastermind.pages.BasePage;
-import ro.upriserz.mastermind.pages.Dashboard;
-import ro.upriserz.mastermind.pages.LoginPage;
+import ro.upriserz.mastermind.pages.*;
 
 public class BaseSteps extends ScenarioSteps {
 
     private BasePage basePage;
     private LoginPage loginPage;
-    private Dashboard dashboard;
+    private DashboardPage dashboardPage;
     private LoginSteps loginSteps;
+    private SearchPage searchPage;
+    private GroupsPage groupsPage;
 
 
     @Step
@@ -43,7 +43,7 @@ public class BaseSteps extends ScenarioSteps {
 
     @Step
     public void openMastermind(){
-        dashboard.open();
+        dashboardPage.open();
     }
 
     @Step
